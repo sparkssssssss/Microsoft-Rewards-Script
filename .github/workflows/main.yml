@@ -7,6 +7,9 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '0 2 * * *'  # 每天 UTC 时间凌晨 2 点执行
+  workflow_dispatch:  # 手动执行
 
 jobs:
   build:
@@ -34,9 +37,9 @@ jobs:
 
       - name: Run build
         run: npm run build
-        
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
-           name: build
-           path: dist/ 
+          name: build
+          path: dist/
