@@ -47,7 +47,7 @@ export class Search extends Workers {
 
         await this.bot.browser.utils.tryDismissAllMessages(page)
 
-        let maxLoop = 0 // If the loop hits 10 this when not gaining any points, we're assuming it's stuck. If it ddoesn't continue after 5 more searches with alternative queries, abort search
+        let maxLoop = 0 // If the loop hits 10 this when not gaining any points, we're assuming it's stuck. If it doesn't continue after 5 more searches with alternative queries, abort search
 
         const queries: string[] = []
         // Mobile search doesn't seem to like related queries?
@@ -156,7 +156,7 @@ export class Search extends Workers {
                 await this.bot.utils.wait(500)
 
                 const searchBar = '#sb_form_q'
-                await searchPage.waitForSelector(searchBar, { state: 'visible', timeout: 10_000 })
+                await searchPage.waitForSelector(searchBar, { state: 'visible', timeout: 10000 })
                 await searchPage.click(searchBar) // Focus on the textarea
                 await this.bot.utils.wait(500)
                 await searchPage.keyboard.down(platformControlKey)
@@ -312,7 +312,7 @@ export class Search extends Workers {
             await this.closeContinuePopup(page)
 
             // Stay for 10 seconds for page to load and "visit"
-            await this.bot.utils.wait(10_000)
+            await this.bot.utils.wait(10000)
 
             // Will get current tab if no new one is created, this will always be the visited site or the result page if it failed to click
             let lastTab = await this.bot.browser.utils.getLatestTab(page)
